@@ -30,4 +30,33 @@ router.get('/:id', (req, res) => {
     res.json(objFound)
 })
 
+router.post('/', (req, res) => {
+    objToPush = req.body
+    fruits.push(objToPush)
+    res.json(fruits)
+
+})
+
+router.put('/:id', (req, res) => {
+    index = req.params.id -1 
+    objFound = fruits[index]
+    objFound.name = req.body.name 
+    objFound.age = req.body.age
+
+    res.json(objFound)
+
+})
+
+router.delete('/:id', (req, res) => {
+    indexToDelete = req.params.id -1
+    if(indexToDelete !=0){
+        fruits.splice(indexToDelete, 1)
+        res.json(fruits)
+    } else{
+        fruits.shift()
+        res.json(fruits)
+    }
+
+})
+
 module.exports = router

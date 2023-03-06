@@ -19,6 +19,7 @@ let users = [
     }
 ]
 
+
 router.get('/', (req, res) => {
     res.json(users)
 })
@@ -27,6 +28,35 @@ router.get('/:id', (req, res) => {
     index = req.params.id - 1
     objFound = users[index]
     res.json(objFound)
+})
+
+router.post('/', (req, res) => {
+    objToPush = req.body
+    users.push(objToPush)
+    res.json(users)
+
+})
+
+router.put('/:id', (req, res) => {
+    index = req.params.id -1 
+    objFound = users[index]
+    objFound.name = req.body.name 
+    objFound.age = req.body.age
+
+    res.json(objFound)
+
+})
+
+router.delete('/:id', (req, res) => {
+    indexToDelete = req.params.id -1
+    if(indexToDelete !=0){
+        users.splice(indexToDelete, 1)
+        res.json(users)
+    } else{
+        users.shift()
+        res.json(users)
+    }
+
 })
 
 module.exports = router

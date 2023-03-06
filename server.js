@@ -44,6 +44,9 @@ let fruits = [
 ]
 
 // Express Routes
+app.use(express.json())
+app.use(express.urlencoded())
+
 app.use('/users', userRouter)
 app.use('/fruits', fruitRouter)
 
