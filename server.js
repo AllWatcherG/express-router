@@ -52,5 +52,5 @@ app.use('/fruits', fruitRouter)
 
 
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`)
+    console.log(`Your server is listening on port http://localhost:${port}/users`)
 })
